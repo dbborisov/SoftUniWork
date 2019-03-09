@@ -18,52 +18,86 @@ public class KaminoFactory {
 
 
         List<Integer> list = new ArrayList<>();
-        int Index = -1 ;
+        int index = -1;
         int sum = Integer.MIN_VALUE;
+        int position = 0;
+        boolean biggSum = false;
 
-
-
-        while (!"Clone them!".equals(input=reader.readLine())){
-
+        int p = 0;
+        while (!"Clone them!".equals(input = reader.readLine())) {
+            p++;
             List<Integer> curDNA = Arrays.stream(input.split("\\!+")).map(Integer::parseInt).collect(Collectors.toList());
 
-            if(curDNA.size()==n){
+            if (curDNA.size() == n) {
                 int indexSiquance = -1;
                 int sumSiquance = -1;
-                int firtIndex =-1;
+                int firtIndex = -1;
+
                 int maxSum = 0;
                 boolean inSiq = false;
 
 
-                for (int i = 0; i <curDNA.size() ; i++) {
+                for (int i = 0; i < curDNA.size(); i++) {
 
-                    if(curDNA.get(i)!=0){
-                        if(indexSiquance!=-1){
-                            sumSiquance+=curDNA.get(i);
-                            inSiq=true;
-                        }else{
-                            indexSiquance=i;
-                            sumSiquance=curDNA.get(i);
+                    if (curDNA.get(i) != 0) {
+                        if (indexSiquance != -1) {
+                            sumSiquance += curDNA.get(i);
+                            inSiq = true;
+                        } else {
+                            indexSiquance = i;
+                            sumSiquance = curDNA.get(i);
                         }
 
-                    }else{
-                        if(inSiq){
-                            firtIndex =indexSiquance;
-                            maxSum=sumSiquance;
-                        }else{
+                    } else {
+                        if (inSiq) {
+                            firtIndex = indexSiquance;
+                            maxSum = sumSiquance;
+                        }
                             indexSiquance = -1;
-                            sum = -1;
-                        }
+                            sumSiquance = -1;
+
 
                     }
 
                 }
+                if (sum <= maxSum) {
+                    if (index == firtIndex) {
+
+                        if (list.stream().mapToInt(Integer::intValue).sum() < curDNA.stream().mapToInt(Integer::intValue).sum()) {
+                            index = indexSiquance;
+                            sum = maxSum;
+                            position = p;
+                            list = curDNA;
+                            biggSum = true;
+
+
+                        }
+                    } else if (index < firtIndex) {
+                        index = indexSiquance;
+                        sum = maxSum;
+                        position = p;
+                        list = curDNA;
+                    }
+
+                }
+//               else if (sum < maxSum) {
+//                    index = indexSiquance;
+//                    sum = maxSum;
+//                    position = p;
+//                    list = curDNA;
+//                }
+            }
+
         }
-
-
-
+        if (!biggSum) {
+            System.out.println(String.format("Best DNA sample %d with sum: %d.", position, sum));
+            System.out.println(list.toString().replaceAll("[\\[\\]\\,]", ""));
+        }else{
+            System.out.println(String.format("Best DNA sample %d with sum: %d.", position, list.stream().mapToInt(Integer::intValue).sum()));
+            System.out.println(list.toString().replaceAll("[\\[\\]\\,]", ""));
         }
+    }
 
     }
 
-}
+
