@@ -60,7 +60,7 @@ public class KaminoFactory {
                     }
 
                 }
-                if (sum <= maxSum) {
+
                     if (index == firtIndex) {
 
                         if (list.stream().mapToInt(Integer::intValue).sum() < curDNA.stream().mapToInt(Integer::intValue).sum()) {
@@ -79,7 +79,7 @@ public class KaminoFactory {
                         list = curDNA;
                     }
 
-                }
+
 //               else if (sum < maxSum) {
 //                    index = indexSiquance;
 //                    sum = maxSum;
@@ -89,13 +89,10 @@ public class KaminoFactory {
             }
 
         }
-        if (!biggSum) {
+
             System.out.println(String.format("Best DNA sample %d with sum: %d.", position, sum));
             System.out.println(list.toString().replaceAll("[\\[\\]\\,]", ""));
-        }else{
-            System.out.println(String.format("Best DNA sample %d with sum: %d.", position, list.stream().mapToInt(Integer::intValue).sum()));
-            System.out.println(list.toString().replaceAll("[\\[\\]\\,]", ""));
-        }
+
     }
 
     }
