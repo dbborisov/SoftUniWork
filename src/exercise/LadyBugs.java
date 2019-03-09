@@ -15,7 +15,7 @@ public class LadyBugs {
 
         int[] fild = new int[n];
         for (int i = 0; i < indexSesOfBugs.size(); i++) {
-            if(Integer.parseInt(indexSesOfBugs.get(i))<=fild.length && Integer.parseInt(indexSesOfBugs.get(i))>-1){
+            if(Integer.parseInt(indexSesOfBugs.get(i))<=fild.length-1 && Integer.parseInt(indexSesOfBugs.get(i))>-1){
                 fild[Integer.parseInt(indexSesOfBugs.get(i))]=1;
 
             }
@@ -39,9 +39,9 @@ public class LadyBugs {
 
             switch (action.get(1)){
                 case "right":
-                    if(Integer.parseInt(action.get(0))<=fild.length&&Integer.parseInt(action.get(0))>-1){
+                    if(Integer.parseInt(action.get(0))<=fild.length - 1&&Integer.parseInt(action.get(0))>-1){
                         if(fild[Integer.parseInt(action.get(0))]==1){
-                            if(Integer.parseInt(action.get(2))<=fild.length && Integer.parseInt(action.get(2))> 0){
+                            if(Integer.parseInt(action.get(2))<=fild.length-1 && Integer.parseInt(action.get(2))> 0){
                                 if(fild[Integer.parseInt(action.get(0))]== 1) {
                                     fild[Integer.parseInt(action.get(0))] = 0;
                                     int setter=Integer.parseInt(action.get(2))+Integer.parseInt(action.get(0));
@@ -70,9 +70,9 @@ public class LadyBugs {
 
                     break;
                 case "left":
-                    if(Integer.parseInt(action.get(0))<=fild.length&&Integer.parseInt(action.get(0))>-1){
+                    if(Integer.parseInt(action.get(0))<=fild.length-1&&Integer.parseInt(action.get(0))>-1){
                         if(fild[Integer.parseInt(action.get(0))]==1){
-                            if(Integer.parseInt(action.get(2))<=fild.length && Integer.parseInt(action.get(2))> 0){
+                            if(Integer.parseInt(action.get(2))<=fild.length -1&& Integer.parseInt(action.get(2))> 0){
                                 if(fild[Integer.parseInt(action.get(0))]== 1) {
                                     fild[Integer.parseInt(action.get(0))] = 0;
                                     int setter=Integer.parseInt(action.get(0)) - Integer.parseInt(action.get(2)) ;
