@@ -22,7 +22,7 @@ public class Prob_03 {
         double hotelExp = hotelPerPerson*daystrip*group;
         if(group>10){
 
-            hotelExp =(hotelPerPerson*daystrip*group)- 0.25*(hotelPerPerson*daystrip*group);
+            hotelExp =(hotelPerPerson*daystrip*group) - 0.25*(hotelPerPerson*daystrip*group);
 
         }
 
