@@ -20,16 +20,17 @@ public class Prob_03 {
         double foodExp = foodPerPerson*group*daystrip;
 
         double hotelExp = hotelPerPerson*daystrip*group;
+        double hotelDiscount = 0;
         if(group>10){
 
-            hotelExp =(hotelPerPerson*daystrip*group) - 0.25*(hotelPerPerson*daystrip*group);
+            hotelDiscount = 0.25*(hotelPerPerson*daystrip*group);
 
         }
 
         double fuletotal= 0;
         double dayExpence = (foodExp+hotelExp) / daystrip;
 
-        double total = foodExp+hotelExp;
+        double total = foodExp+hotelExp - hotelDiscount;
 
         for (int i = 1; i <=daystrip ; i++) {
             if(budget>=total) {
