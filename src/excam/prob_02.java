@@ -78,6 +78,7 @@ public class prob_02 {
 //            System.out.println();
 
         }
+        newPrice.stream().sorted();
         System.out.println();
 
         double total = newPrice.stream().mapToDouble(Double::parseDouble).sum();
