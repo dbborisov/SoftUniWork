@@ -57,11 +57,13 @@ public class prob_01 {
 
               list=list.stream().collect(Collectors.collectingAndThen(Collectors.toList(),strings ->{
                   Collections.reverse(strings);
+
+
                   return strings;
               }));
             }
 
-
+            Collections.reverse(list);
 
         }
 
