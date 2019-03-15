@@ -26,9 +26,7 @@ public class CountRealNumbers {
             }
 
         }
-        countCar.entrySet().forEach(e ->{
-            System.out.println(String.format("%s -> %d",e.getKey(),e.getValue()));
-        });
+        countCar.forEach((key, value) -> System.out.println(String.format("%s -> %d", key, value)));
 
     }
 }
