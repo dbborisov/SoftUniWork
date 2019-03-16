@@ -16,22 +16,33 @@ public class LegendaryFarming {
         Map<String, Integer> materials = new TreeMap<>();
         String[] text = scanner.nextLine().split("\\s+");
 
-        Map<String ,Integer> junc = new TreeMap<>();
-        while (true) {
+        Map<String, Integer> junc = new TreeMap<>();
+        boolean flag = false;
+
+        while (!flag) {
             int materialCount = 0;
             String materialName = "";
             for (int i = 0; i < text.length; i += 2) {
                 materialCount = Integer.parseInt(text[i]);
                 materialName = text[i + 1].toLowerCase();
-                if(materialName.equals("fragments")||materialName.equals("shards")||materialName.equals("motes")) {
+                if (materialName.equals("fragments") || materialName.equals("shards") || materialName.equals("motes")) {
 
                     if (!materials.containsKey(materialName)) {
                         materials.put(materialName, materialCount);
+                        if (materials.get(materialName) >= 250) {
+                            flag = true;
+                            break;
+                        }
                     } else {
                         materials.put(materialName, materials.get(materialName) + materialCount);
+                        if (materials.get(materialName) >= 250) {
+                            flag = true;
+                            break;
+                        }
+
 
                     }
-                }else{
+                } else {
 
                     if (!junc.containsKey(materialName)) {
                         junc.put(materialName, materialCount);
@@ -42,38 +53,52 @@ public class LegendaryFarming {
 
                 }
 
+
             }
-            if(materials.containsKey("fragments")) {
-                if (materials.get("fragments") >= 255) {
-                    System.out.println("Valanyr obtained!");
-                    materials.put("fragments", materials.get("fragments") -250);
-                    break;
-                }
-            }
-            if(materials.containsKey("shards")){
-                if (materials.get("shards") >= 255) {
-                    System.out.println("Shadowmourne obtained!");
-                    materials.put("shards", materials.get("shards") -250);
-                    break;
-                }
-            }
-            if(materials.containsKey("motes")){
-                if (materials.get("motes") >= 255) {
-                    System.out.println("Dragonwrath obtained!");
-                    materials.put("motes", materials.get("motes") -250);
-                    break;
-                }
-            }
+
+
             text = scanner.nextLine().split("\\s+");
 
         }
+        if (materials.containsKey("fragments")) {
+            if (materials.get("fragments") >= 255) {
+                System.out.println("Valanyr obtained!");
+                materials.put("fragments", materials.get("fragments") - 250);
 
-        materials.entrySet().forEach(e->{
+            }
+        }
+        if (materials.containsKey("shards")) {
+            if (materials.get("shards") >= 255) {
+                System.out.println("Shadowmourne obtained!");
+                materials.put("shards", materials.get("shards") - 250);
 
-                System.out.println(String.format("%s: %d", e.getKey(), e.getValue()));
+            }
+        }
+        if (materials.containsKey("motes")) {
+            if (materials.get("motes") >= 255) {
+                System.out.println("Dragonwrath obtained!");
+                materials.put("motes", materials.get("motes") - 250);
 
+            }
+        }
+
+        materials.entrySet().stream().sorted((e1, e2) -> {
+            int sort = Integer.compare(e2.getValue(), e1.getValue());
+            if (sort == 0) {
+                sort = e1.getKey().compareTo(e2.getKey());
+            }
+            return sort;
+
+        }).forEach(e -> {
+            System.out.println(String.format("%s: %d", e.getKey(), e.getValue()));
         });
-        junc.entrySet().forEach(e->{
+
+//        materials.entrySet().forEach(e->{
+//
+//                System.out.println(String.format("%s: %d", e.getKey(), e.getValue()));
+//
+//        });
+        junc.entrySet().forEach(e -> {
             System.out.println(String.format("%s: %d", e.getKey(), e.getValue()));
         });
 
