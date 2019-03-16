@@ -18,9 +18,9 @@ public class LegendaryFarming {
 
         Map<String, Integer> junc = new TreeMap<>();
         boolean flag = false;
-        materials.put("fragments",0);
-        materials.put("shards",0);
-        materials.put("motes",0);
+        materials.put("fragments", 0);
+        materials.put("shards", 0);
+        materials.put("motes", 0);
 
 
         while (true) {
@@ -29,12 +29,13 @@ public class LegendaryFarming {
             for (int i = 0; i < text.length; i += 2) {
                 materialCount = Integer.parseInt(text[i]);
                 materialName = text[i + 1].toLowerCase();
+
                 if (materialName.equals("fragments") || materialName.equals("shards") || materialName.equals("motes")) {
 
-                        materials.put(materialName, materials.get(materialName) + materialCount);
-                        if (materials.get(materialName) >= 250) {
-                            flag = true;
-                            break;
+                    materials.put(materialName, materials.get(materialName) + materialCount);
+                    if (materials.get(materialName) >= 250) {
+                        flag = true;
+                        break;
 
                     }
                 } else {
@@ -50,7 +51,7 @@ public class LegendaryFarming {
 
 
             }
-            if(flag){
+            if (flag) {
                 break;
             }
 
@@ -58,27 +59,21 @@ public class LegendaryFarming {
             text = scanner.nextLine().split("\\s+");
 
         }
-        if (materials.containsKey("fragments")) {
-            if (materials.get("fragments") >= 255) {
+
+            if (materials.get("fragments") >= 250) {
                 System.out.println("Valanyr obtained!");
                 materials.put("fragments", materials.get("fragments") - 250);
 
-            }
-        }
-        if (materials.containsKey("shards")) {
-            if (materials.get("shards") >= 255) {
+            }else if (materials.get("shards") >= 250) {
                 System.out.println("Shadowmourne obtained!");
                 materials.put("shards", materials.get("shards") - 250);
 
-            }
-        }
-        if (materials.containsKey("motes")) {
-            if (materials.get("motes") >= 255) {
+            }else if (materials.get("motes") >= 250) {
                 System.out.println("Dragonwrath obtained!");
                 materials.put("motes", materials.get("motes") - 250);
 
             }
-        }
+
 
         materials.entrySet().stream().sorted((e1, e2) -> {
             int sort = Integer.compare(e2.getValue(), e1.getValue());
