@@ -1,6 +1,7 @@
 package MapAndLambda.HomeWork;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Courses {
     public static void main(String[] args) {
@@ -33,9 +34,10 @@ public class Courses {
 
         clasess.entrySet().stream().sorted((e1,e2)->Integer.compare(e2.getValue().size(),e1.getValue().size())).forEach(e->{
             System.out.println(String.format("%s: %d",e.getKey(),e.getValue().size()));
+            List<String> students =e.getValue().stream().sorted().collect(Collectors.toList());
             int index=e.getValue().size();
             for (int i = 0; i <index ; i++) {
-                System.out.println("-- "+e.getValue().get(i));
+                System.out.println("-- "+students.get(i));
 
             }
         });
