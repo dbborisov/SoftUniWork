@@ -17,12 +17,14 @@ public class SoftUniParking {
             input = scanner.nextLine().split("\\s+");
             String command = input[0];
             String name = input[1];
+
+
             if(input.length==3) {
 
                 String plate = input[2];
 
 
-                if (command.equals("register") && !user.containsKey(name) && !user.containsValue(plate)) {
+                if (command.equals("register") && !user.containsKey(name) ) {
                     System.out.println(String.format("%s registered %s successfully", name, plate));
                     user.put(name, plate);
                 } else if (user.containsKey(name) && command.equals("register")) {
