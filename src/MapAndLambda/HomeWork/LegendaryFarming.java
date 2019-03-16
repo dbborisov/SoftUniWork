@@ -18,8 +18,12 @@ public class LegendaryFarming {
 
         Map<String, Integer> junc = new TreeMap<>();
         boolean flag = false;
+        materials.put("fragments",0);
+        materials.put("shards",0);
+        materials.put("motes",0);
 
-        while (!flag) {
+
+        while (true) {
             int materialCount = 0;
             String materialName = "";
             for (int i = 0; i < text.length; i += 2) {
@@ -27,19 +31,10 @@ public class LegendaryFarming {
                 materialName = text[i + 1].toLowerCase();
                 if (materialName.equals("fragments") || materialName.equals("shards") || materialName.equals("motes")) {
 
-                    if (!materials.containsKey(materialName)) {
-                        materials.put(materialName, materialCount);
-                        if (materials.get(materialName) >= 250) {
-                            flag = true;
-                            break;
-                        }
-                    } else {
                         materials.put(materialName, materials.get(materialName) + materialCount);
                         if (materials.get(materialName) >= 250) {
                             flag = true;
                             break;
-                        }
-
 
                     }
                 } else {
@@ -54,6 +49,9 @@ public class LegendaryFarming {
                 }
 
 
+            }
+            if(flag){
+                break;
             }
 
 
