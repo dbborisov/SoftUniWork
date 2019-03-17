@@ -12,35 +12,43 @@ public class CompanyUsers {
         Map<String, List<String>> compani = new TreeMap<>();
 
         while (!"End".equals(in = scanner.nextLine())) {
+            compani = getCompani(in,compani);
 
-            String[] command = in.split(" -> ");
-            String compan = command[0];
-            String name = command[1].toUpperCase();
-            if (!compani.containsKey(compan)) {
-                List<String> employ = new ArrayList<>();
-                employ.add(name);
-                compani.put(compan, employ);
-            } else if (compani.containsKey(compan)) {
-                List<String> oldStudents = compani.get(compan);
-                if(oldStudents.contains(name)){
-                    continue;
-                }
-                List<String> newStudents = oldStudents;
-                newStudents.add(name);
-                compani.put(compan, newStudents);
-            }
 
         }
-        compani.entrySet().stream().forEach(e->{
-            System.out.println(String.format("%s",e.getKey()));
-            List<String> id =e.getValue().stream().collect(Collectors.toList());
-            int index=e.getValue().size();
-            for (int i = 0; i <index ; i++) {
-                System.out.println("-- "+id.get(i));
+        compani.entrySet().stream().forEach(e -> {
+            System.out.println(String.format("%s", e.getKey()));
+            List<String> id = e.getValue().stream().collect(Collectors.toList());
+            int index = e.getValue().size();
+            for (int i = 0; i < index; i++) {
+                System.out.println("-- " + id.get(i));
 
             }
         });
 
+    }
+
+    public static Map<String, List<String>> getCompani(String in, Map<String, List<String>> map) {
+
+
+        String[] command = in.split(" -> ");
+        String compan = command[0];
+        String name = command[1].toUpperCase();
+        if (!map.containsKey(compan)) {
+            List<String> employ = new ArrayList<>();
+            employ.add(name);
+            map.put(compan, employ);
+        } else if (map.containsKey(compan)) {
+            List<String> oldStudents = map.get(compan);
+            if (oldStudents.contains(name)) {
+                return map;
+            }
+            List<String> newStudents = oldStudents;
+            newStudents.add(name);
+            map.put(compan, newStudents);
+
+        }
+        return map;
     }
 }
 
