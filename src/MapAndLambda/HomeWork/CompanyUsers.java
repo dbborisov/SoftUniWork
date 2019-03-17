@@ -33,10 +33,10 @@ public class CompanyUsers {
         }
         compani.entrySet().stream().forEach(e->{
             System.out.println(String.format("%s",e.getKey()));
-            List<String> students =e.getValue().stream().collect(Collectors.toList());
+            List<String> id =e.getValue().stream().collect(Collectors.toList());
             int index=e.getValue().size();
             for (int i = 0; i <index ; i++) {
-                System.out.println("-- "+students.get(i));
+                System.out.println("-- "+id.get(i));
 
             }
         });

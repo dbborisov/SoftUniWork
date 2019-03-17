@@ -25,9 +25,9 @@ public class Courses {
                 clasess.put(clasS,student);
             }else if(clasess.containsKey(clasS)){
                 List<String> oldStudents = clasess.get(clasS);
-                List<String> newStudents = oldStudents;
-                newStudents.add(name);
-                clasess.put(clasS,newStudents);
+//                List<String> newStudents = oldStudents;
+                oldStudents.add(name);
+                clasess.put(clasS,oldStudents);
             }
 
         }
