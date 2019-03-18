@@ -65,7 +65,7 @@ public class ForceBook {
 
                 System.out.println(String.format("Side: %s, Members: %d",e.getKey(),e.getValue().size()));
 
-                e.getValue().stream().forEach(u->{
+                e.getValue().forEach(u->{
                     System.out.println("! "+ u);
                 });
 
