@@ -33,13 +33,17 @@ public class MultiplyBigNumber {
                 }
             } else {
                 out += sum + "";
-                numLeft=0;
+                numLeft = 0;
             }
 
 
         }
-        List<String> a = Arrays.stream(out.split("")).collect(Collectors.toList());
-        Collections.reverse(a);
-        System.out.println(a.toString().replaceAll("[\\[\\], ]", ""));
+        if ((out.charAt(out.length()-1) + "").equals("0")) {
+            System.out.println(0);
+        } else {
+            List<String> a = Arrays.stream(out.split("")).collect(Collectors.toList());
+            Collections.reverse(a);
+            System.out.println(a.toString().replaceAll("[\\[\\], ]", ""));
+        }
     }
 }
