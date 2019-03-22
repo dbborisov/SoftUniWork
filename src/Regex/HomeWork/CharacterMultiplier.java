@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class CharacterMultiplier {
     public static void main(String[] args) {
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         String[] input = scanner.nextLine().split("\\s+");
 
 
@@ -16,7 +16,10 @@ public class CharacterMultiplier {
 
     private static int getCarDum(String[] input) {
         int sum = 0;
-        int[] first = Arrays.stream(input[0].split("")).mapToInt(e->{int ex=e.charAt(0);return ex;}).toArray();
+        int[] first = Arrays.stream(input[0].split("")).mapToInt(e -> {
+            int ex = e.charAt(0);
+            return ex;
+        }).toArray();
 
         int[] second = Arrays.stream(input[1].split("")).mapToInt(value -> {
             int e = value.charAt(0);
@@ -24,11 +27,11 @@ public class CharacterMultiplier {
         }).toArray();
 
         String big = "";
-        int index=0 ;
+        int index = 0;
 
         if (first.length > second.length) {
             big = "first";
-            index= second.length;
+            index = second.length;
 
             for (int i = 0; i < second.length; i++) {
                 sum += first[i] * second[i];
@@ -41,7 +44,7 @@ public class CharacterMultiplier {
             }
 
         }
-        if(first.length!=second.length) {
+        if (first.length != second.length) {
             if (big.equals("first")) {
                 for (int i = index; i < first.length; i++) {
                     sum += first[i];

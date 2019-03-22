@@ -11,12 +11,13 @@ public class CaesarCipher {
         System.out.println(getCrypted(in));
 
     }
+
     private static String getCrypted(String in) {
         String crypt = "";
 
-        for (int i = 0; i <in.length() ; i++) {
+        for (int i = 0; i < in.length(); i++) {
 
-                crypt+=(char)(in.charAt(i)+3)+"";
+            crypt += (char) (in.charAt(i) + 3) + "";
         }
 
 

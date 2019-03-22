@@ -38,7 +38,7 @@ public class MultiplyBigNumber {
 
 
         }
-        if ((out.charAt(out.length()-1) + "").equals("0")) {
+        if ((out.charAt(out.length() - 1) + "").equals("0")) {
             System.out.println(0);
         } else {
             List<String> a = Arrays.stream(out.split("")).collect(Collectors.toList());
