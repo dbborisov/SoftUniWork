@@ -11,8 +11,8 @@ public class ValidUserName {
         String input = scanner.nextLine();
         String[] out = input.split(",\\s+");
         System.out.println();
-        Arrays.stream(out).forEach(e->{
-            if(e.matches("[A-Za-z0-9-_]{3,16}")){
+        Arrays.stream(out).forEach(e -> {
+            if (e.matches("[A-Za-z0-9-_]{3,16}")) {
                 System.out.println(e);
             }
         });

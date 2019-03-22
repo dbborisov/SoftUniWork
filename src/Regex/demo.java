@@ -8,10 +8,10 @@ public class demo {
 
 
         Scanner scanner = new Scanner(System.in);
-         Instant start =  Instant.now();
+        Instant start = Instant.now();
         System.out.println(start);
 
-         Instant stop = Instant.now();
+        Instant stop = Instant.now();
         System.out.println(stop);
 
         String[] arr = scanner.nextLine().split("\\s+");
