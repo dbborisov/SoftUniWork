@@ -9,25 +9,25 @@ public class ReplaceRepeatingChars {
         String in = scanner.nextLine();
 //        in=in.replaceAll("\\s+","");
         String out = "";
-        int count = 0;
+//        int count = 0;
 
         for (int i = 0; i < in.length(); i++) {
             char cha = in.charAt(i);
 
-            for (int j = i; j < in.length(); j++) {
+            for (int j = i; j < in.length()-1; j++) {
 
-                if (cha == in.charAt(j)) {
-                    count++;
+                if (cha == in.charAt(j+1)) {
+//                    count++;
+                    i++;
 
                 } else {
-                    out += cha;
-                    in = in.substring(j);
-                    count = 0;
-                    i--;
+
                     break;
                 }
             }
-
+            out += cha;
+//            in = in.substring(j);
+//            count = 0;
         }
         if (in.length() == 2) {
             if (in.charAt(0) == in.charAt(1)) {
