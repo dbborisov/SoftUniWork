@@ -18,72 +18,71 @@ public class StarEnigma {
         int n = Integer.parseInt(reader.readLine());
         String crypt = "";
         Map<String, List<String>> planet = new TreeMap<>();
-        planet.put("A",new ArrayList<>());
-        planet.put("D",new ArrayList<>());
-        Pattern decriptPattern = Pattern.compile("@(?<planet>[A-Z][a-z]*)(?:[^@\\-!:>.]*):(?<population>[0-9]+)!(?:[^@\\-!:>.]*)(?<atack>[AaDd])(?:[^@\\-!:>.]*)!(?:[^@\\-!:>.]*)->(?:[^@\\-!:>.]*)(?<soldiers>[0-9]+)(?:[^@\\-!:>.]*)");
+        planet.put("A", new ArrayList<>());
+        planet.put("D", new ArrayList<>());
+        Pattern decriptPattern = Pattern.compile("@(?<planet>[A-Z][a-z]*)(?:[^@\\-!:>.]*):" +
+                                                     "(?<population>[0-9]+)!(?:[^@\\-!:>.]*)" +
+                                                     "(?<atack>[AaDd])(?:[^@\\-!:>.]*)!(?:[^@\\-!:>.]*)->(?:[^@\\-!:>.]*)" +
+                                                     "(?<soldiers>[0-9]+)(?:[^@\\-!:>.]*)");
 
-
-
-        for (int i = 0; i < n ; i++) {
+        for (int i = 0; i < n; i++) {
             String decrypt = "";
 
-            crypt=reader.readLine();
+            crypt = reader.readLine();
             int key = keyExtract(crypt);
 
             for (int j = 0; j < crypt.length(); j++) {
 
 
-                decrypt+=(char)(crypt.charAt(j)-key) ;
+                decrypt += (char) (crypt.charAt(j) - key);
 
             }
-            Matcher matcher =decriptPattern.matcher(decrypt);
-            String namePlanet ="";
-            String atack ="";
+            Matcher matcher = decriptPattern.matcher(decrypt);
+            String namePlanet = "";
+            String atack = "";
 
-            while (matcher.find()){
-                namePlanet+= matcher.group("planet");
-                atack+=matcher.group("atack");
+            while (matcher.find()) {
+                namePlanet += matcher.group("planet");
+                atack += matcher.group("atack");
             }
 
-            if(atack.equals("A")){
-                List<String> newValue =planet.get(atack);
+            if (atack.equals("A")) {
+                List<String> newValue = planet.get(atack);
                 newValue.add(namePlanet);
-                planet.put(atack,newValue);
-            }else if(atack.equals("D")){
-                List<String> newValue =planet.get(atack);
+                planet.put(atack, newValue);
+            } else if (atack.equals("D")) {
+                List<String> newValue = planet.get(atack);
                 newValue.add(namePlanet);
-                planet.put(atack,newValue);
+                planet.put(atack, newValue);
             }
-
-
-
         }
-        planet.entrySet().stream().forEach(e1->{
+        planet.entrySet().stream().forEach(e1 -> {
             List<String> out = e1.getValue().stream().sorted().collect(Collectors.toList());
-            if(e1.getKey().equals("A")) {
+            if (e1.getKey().equals("A")) {
                 System.out.println(String.format("Attacked planets: %d", e1.getValue().size()));
 
-
-                for (int i = 0; i < e1.getValue().size() ; i++) {
-                    System.out.println(String.format("-> %s",out.get(i)));
+                for (int i = 0; i < e1.getValue().size(); i++) {
+                    System.out.println(String.format("-> %s", out.get(i)));
                 }
-            }else{
+
+            } else {
                 System.out.println(String.format("Destroyed planets: %d", e1.getValue().size()));
-                for (int i = 0; i < e1.getValue().size() ; i++) {
-                    System.out.println(String.format("-> %s",out.get(i)));
+                for (int i = 0; i < e1.getValue().size(); i++) {
+                    System.out.println(String.format("-> %s", out.get(i)));
                 }
             }
         });
 
     }
-    private static int keyExtract(String in){
+
+    private static int keyExtract(String in) {
 
         String mach = "";
         Pattern pattern = Pattern.compile("[sStTaArR]*");
         Matcher matcher = pattern.matcher(in);
-        while (matcher.find()){
+        while (matcher.find()) {
 
-            mach+=matcher.group(0);
+            mach += matcher.group(0);
         }
 
 
