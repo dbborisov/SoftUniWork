@@ -4,19 +4,34 @@ import java.util.Scanner;
 
 public class StringBuilder_String_bomb {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        StringBuilder out = new StringBuilder();
-        String in = scanner.nextLine();
-        out.append(in);
-        int start=out.indexOf(">");
-        int end=out.lastIndexOf(">");
 
-//        String[] test = out.toString().split(">");
-
-//        out.delete(start,out.indexOf());
-        System.out.println(in);
+                Scanner scanner = new Scanner(System.in);
 
 
+                String text = scanner.nextLine();
 
-    }
-}
+                String result = "";
+                int strength = 0;
+
+                for (int i = 0; i < text.length(); i++) {
+
+                    result += text.charAt(i);
+
+                    if (text.charAt(i) == '>') {
+                        strength += Integer.parseInt(String.valueOf(text.charAt(i + 1)));
+                    }
+
+                    while (strength > 0) {
+                        strength--;
+                        i++;
+
+                        if (i + 1 >= text.length() || text.charAt(i + 1) == '>') {
+                            break;
+                        }
+
+                    }
+                }
+                System.out.println(result);
+            }
+        }
+
