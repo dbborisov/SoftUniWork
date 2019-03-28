@@ -10,5 +10,7 @@ public class NetherRealms {
         String[] mounstarName =scanner.nextLine().split(",\\s*");
         System.out.println(mounstarName);
 
+
+
     }
 }
