@@ -22,6 +22,7 @@ public class Simple_Calculator {
             }
 
         }
+
         System.out.println(sum.pop());
     }
 }
