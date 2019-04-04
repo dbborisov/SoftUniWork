@@ -13,7 +13,7 @@ public class BasicStackOperations {
         int[] commands = Arrays.stream(scanner.nextLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
         Deque<Integer> nums = new ArrayDeque<>();
 
-        Arrays.stream(scanner.nextLine().split("\\s+")).limit(commands[0]).mapToInt(Integer::parseInt).forEach(e->nums.push(e));
+        Arrays.stream(scanner.nextLine().split("\\s+")).limit(commands[0]).mapToInt(Integer::parseInt).forEach(nums::push);
         for (int i = 0; i <commands[1] ; i++) {
             nums.pop();
         }
