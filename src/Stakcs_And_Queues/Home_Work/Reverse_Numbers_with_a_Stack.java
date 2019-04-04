@@ -1,10 +1,7 @@
 package Stakcs_And_Queues.Home_Work;
 
 import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Reverse_Numbers_with_a_Stack {
     public static void main(String[] args) {
