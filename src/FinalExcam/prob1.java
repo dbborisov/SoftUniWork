@@ -25,10 +25,6 @@ public class prob1 {
 
         in = scanner.nextLine().split(" \\| ");
 
-//        book.entrySet().stream().sorted((e1,e2)->{
-//            int sort = Integer.compare(e2.getValue().size(),e1.getValue().size());
-//            return sort;
-//        });
 
         for (int i = 0; i < in.length; i++) {
 
@@ -47,10 +43,7 @@ public class prob1 {
         }
 
         if ("List".equals(scanner.nextLine())) {
-            book.keySet().stream().sorted((e2, e1) -> {
-                int sort = Integer.compare(e2.length(), e1.length());
-                return sort;
-            }).forEach(e->{
+            book.keySet().stream().sorted().forEach(e->{
                 System.out.print(e+" ");
             });
         }
