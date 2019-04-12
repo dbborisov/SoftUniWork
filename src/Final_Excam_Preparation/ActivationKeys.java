@@ -31,24 +31,14 @@ public class ActivationKeys {
                         newOk+="-";
                     }
 
-                    if(ok.get(i).charAt(j)>=48&&ok.get(i).charAt(j)<=57){
-
-                        newOk+=(9 - Integer.parseInt(ok.get(i).charAt(j)+"")+"");
-                        continue;
-                    }
-                    newOk+=ok.get(i).charAt(j);
+                    newOk = getString(ok, i, newOk, j);
                 }
             }else{
                 for (int j = 0; j <ok.get(i).length() ; j++) {
                     if(j%5==0){
                         newOk+="-";
                     }
-                    if(ok.get(i).charAt(j)>=48&&ok.get(i).charAt(j)<=57){
-
-                        newOk+=(9 - Integer.parseInt(ok.get(i).charAt(j)+"")+"");
-                        continue;
-                    }
-                    newOk+=ok.get(i).charAt(j);
+                    newOk = getString(ok, i, newOk, j);
                 }
             }
             ok.set(i,newOk.substring(1).toUpperCase());
@@ -57,5 +47,15 @@ public class ActivationKeys {
         String out = ok.stream().collect(Collectors.joining(", "));
         System.out.println(out);
 
+    }
+
+    private static String getString(List<String> ok, int i, String newOk, int j) {
+        if(ok.get(i).charAt(j)>=48&&ok.get(i).charAt(j)<=57){
+
+            newOk+=(9 - Integer.parseInt(ok.get(i).charAt(j)+"")+"");
+            return newOk;
+        }
+        newOk+=ok.get(i).charAt(j);
+        return newOk;
     }
 }
