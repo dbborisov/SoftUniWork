@@ -12,7 +12,7 @@ public class VaporWinterSale {
         Map<String,String> gameDLC= new LinkedHashMap<>();
 
 
-        String[] in = scanner.nextLine().split(",\\s+");
+        String[] in = scanner.nextLine().split(", ");
 
         for (int i = 0; i <in.length ; i++) {
 
@@ -21,20 +21,38 @@ public class VaporWinterSale {
                 String game = in[i].split("-")[0];
                 double price = Double.parseDouble(in[i].split("-")[1]);
 
-                gamePrice.putIfAbsent(game,price);
+                gamePrice.put(game,price);
 
             }else{
                 String dlc = in[i].split(":")[1];
                 String game = in[i].split(":")[0];
                 if(gamePrice.containsKey(game)){
-                    gamePrice.put(game,gamePrice.get(game)*1.2);
+                    gamePrice.put(game,gamePrice.get(game)+((gamePrice.get(game)*0.2)));
                     gameDLC.put(game,dlc);
                 }
 
             }
 
         }
+       gamePrice.entrySet().forEach(e->{
+           if(gameDLC.containsKey(e.getKey())){
+              gamePrice.put(e.getKey(), gamePrice.get(e.getKey())/2);
+           }else{
+               gamePrice.put(e.getKey(), gamePrice.get(e.getKey())*0.8);
+           }
+       });
 
-        System.out.println();
+        gamePrice.entrySet().stream().sorted((e1,e2)->e1.getValue().compareTo(e2.getValue())).forEach(e->{
+            if(gameDLC.containsKey(e.getKey())){
+                System.out.println(String.format("%s - %s - %.2f",e.getKey(),gameDLC.get(e.getKey()),e.getValue()));
+            }
+        });
+        gamePrice.entrySet().stream().sorted((e1,e2)->e2.getValue().compareTo(e1.getValue())).forEach(e->{
+            if(!gameDLC.containsKey(e.getKey())){
+                System.out.println(String.format("%s - %.2f",e.getKey(),e.getValue()));
+
+            }
+        });
+
     }
 }
