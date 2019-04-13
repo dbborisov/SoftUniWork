@@ -1,4 +1,4 @@
-package FinalExcam;
+package Final_Excam_Preparation;
 
 import java.util.Scanner;
 

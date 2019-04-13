@@ -21,9 +21,9 @@ public class StarEnigma {
         planet.put("A", new ArrayList<>());
         planet.put("D", new ArrayList<>());
         Pattern decriptPattern = Pattern.compile("@(?<planet>[A-Z][a-z]*)(?:[^@\\-!:>.]*):" +
-                                                     "(?<population>[0-9]+)!(?:[^@\\-!:>.]*)" +
-                                                     "(?<atack>[AaDd])(?:[^@\\-!:>.]*)!(?:[^@\\-!:>.]*)->(?:[^@\\-!:>.]*)" +
-                                                     "(?<soldiers>[0-9]+)(?:[^@\\-!:>.]*)");
+                "(?<population>[0-9]+)!(?:[^@\\-!:>.]*)" +
+                "(?<atack>[AaDd])(?:[^@\\-!:>.]*)!(?:[^@\\-!:>.]*)->(?:[^@\\-!:>.]*)" +
+                "(?<soldiers>[0-9]+)(?:[^@\\-!:>.]*)");
 
         for (int i = 0; i < n; i++) {
             String decrypt = "";
