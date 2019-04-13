@@ -21,11 +21,8 @@ public class Dictionary {
             if(!words.containsKey(word)){
                 words.put(word, new ArrayList<>());
             }
-
             words.get(word).add(definition);
-
         }
-
         in = scanner.nextLine().split(" \\| ");
         for (int i = 0; i <in.length ; i++) {
 
@@ -36,15 +33,11 @@ public class Dictionary {
                     System.out.println(String.format(" -%s",e));
                 });
             }
-
         }
 
         if("List".equals(scanner.nextLine())){
            String list  = words.keySet().stream().sorted().collect(Collectors.joining(" "));
             System.out.println(list);
         }
-
-
-        System.out.println();
     }
 }
