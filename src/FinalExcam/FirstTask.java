@@ -6,6 +6,12 @@ public class FirstTask {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String in = scanner.nextLine();
+        String in ="";
+
+
+
+        while (!"Last note".equals(in=scanner.nextLine())){
+
+        }
     }
 }
